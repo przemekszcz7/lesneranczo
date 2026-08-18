@@ -2,7 +2,7 @@
 <html lang="pl">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover" />
   <title>Leśne Ranczo | Gospodarstwo Agroturystyczne, Olszewka</title>
   <meta name="description" content="Gospodarstwo Agroturystyczne Leśne Ranczo w Olszewce koło Ostrołęki. Jazda konna, przejażdżki bryczką, mini zoo, kajaki i imprezy okolicznościowe." />
   
@@ -16,7 +16,7 @@
   <link rel="icon" type="image/png" href="https://i.ibb.co/20HLCdC0/302872249-488522279947653-4694132767440406748-n.png" />
   <link rel="apple-touch-icon" href="https://i.ibb.co/20HLCdC0/302872249-488522279947653-4694132767440406748-n.png" />
 
-  <!-- Optymalizacja szybkiego ładowania zdjęć i czcionek -->
+  <!-- Optymalizacja szybkiego ładowania zasobów -->
   <link rel="preconnect" href="https://i.ibb.co" crossorigin />
   <link rel="dns-prefetch" href="https://i.ibb.co" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -56,19 +56,24 @@
       --shadow-md: 0 8px 24px rgba(38, 35, 22, 0.1);
       --shadow-lg: 0 16px 36px rgba(38, 35, 22, 0.14);
       
-      --transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+      --transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
     *, *::before, *::after {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
+      -webkit-tap-highlight-color: transparent;
     }
 
     html {
       scroll-behavior: smooth;
       font-size: 16px;
       -webkit-text-size-adjust: 100%;
+      overflow-x: hidden;
+      width: 100%;
+      max-width: 100%;
+      overscroll-behavior-x: none;
     }
 
     body {
@@ -77,32 +82,47 @@
       color: var(--color-text-main);
       line-height: 1.65;
       overflow-x: hidden;
+      width: 100%;
+      max-width: 100%;
+      position: relative;
+      overscroll-behavior-x: none;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      text-rendering: optimizeLegibility;
     }
 
     img {
       max-width: 100%;
       height: auto;
       display: block;
-      content-visibility: auto;
     }
 
     a {
       color: inherit;
       text-decoration: none;
       transition: var(--transition);
+      touch-action: manipulation;
     }
 
     button {
       font-family: inherit;
       font-size: inherit;
+      touch-action: manipulation;
+      cursor: pointer;
     }
 
-    /* Kontener centralny */
+    /* Kontener centralny - zapobiega jakimkolwiek przekroczeniom szerokości */
     .container {
       width: 100%;
       max-width: 1200px;
       margin: 0 auto;
-      padding: 0 1.25rem;
+      padding: 0 1rem;
+    }
+
+    @media (min-width: 640px) {
+      .container {
+        padding: 0 1.5rem;
+      }
     }
 
     /* Typografia nagłówków */
@@ -111,12 +131,18 @@
       color: var(--color-dark);
       line-height: 1.2;
       font-weight: 700;
+      overflow-wrap: break-word;
+      word-break: break-word;
+    }
+
+    p, span, li, a {
+      overflow-wrap: break-word;
     }
 
     .section-header {
       text-align: center;
       max-width: 760px;
-      margin: 0 auto 3rem auto;
+      margin: 0 auto 2.5rem auto;
     }
 
     .section-tag {
@@ -126,58 +152,59 @@
       letter-spacing: 0.08em;
       text-transform: uppercase;
       color: var(--color-primary);
-      margin-bottom: 0.75rem;
+      margin-bottom: 0.625rem;
     }
 
     .section-title {
-      font-size: 2rem;
-      margin-bottom: 1rem;
+      font-size: 1.75rem;
+      margin-bottom: 0.875rem;
       letter-spacing: -0.01em;
     }
 
     .section-subtitle {
-      font-size: 1.0625rem;
+      font-size: 1rem;
       color: var(--color-text-muted);
       line-height: 1.6;
     }
 
-    /* Przyciski */
+    /* Przyciski zoptymalizowane pod kątem dotyku na mobile */
     .btn {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      gap: 0.625rem;
-      padding: 0.8125rem 1.625rem;
+      gap: 0.5rem;
+      padding: 0.75rem 1.375rem;
       border-radius: var(--radius-sm);
       font-weight: 600;
       font-size: 0.9375rem;
-      cursor: pointer;
       border: 1px solid transparent;
       transition: var(--transition);
-      white-space: nowrap;
       text-align: center;
+      max-width: 100%;
+      min-height: 46px;
+      user-select: none;
     }
 
     .btn-primary {
       background-color: var(--color-primary);
       color: var(--color-white);
-      box-shadow: 0 4px 14px rgba(225, 124, 35, 0.35);
+      box-shadow: 0 4px 12px rgba(225, 124, 35, 0.3);
     }
 
-    .btn-primary:hover {
+    .btn-primary:hover, .btn-primary:active {
       background-color: var(--color-primary-hover);
-      transform: translateY(-2px);
-      box-shadow: 0 6px 18px rgba(225, 124, 35, 0.45);
+      transform: translateY(-1px);
+      box-shadow: 0 6px 16px rgba(225, 124, 35, 0.4);
     }
 
     .btn-secondary {
-      background-color: transparent;
+      background-color: rgba(255, 255, 255, 0.08);
       color: var(--color-white);
       border-color: rgba(255, 255, 255, 0.45);
     }
 
-    .btn-secondary:hover {
-      background-color: rgba(255, 255, 255, 0.12);
+    .btn-secondary:hover, .btn-secondary:active {
+      background-color: rgba(255, 255, 255, 0.16);
       border-color: var(--color-white);
     }
 
@@ -187,14 +214,15 @@
       border-color: var(--color-border);
     }
 
-    .btn-outline-dark:hover {
+    .btn-outline-dark:hover, .btn-outline-dark:active {
       background-color: var(--color-bg-sand);
       border-color: var(--color-dark);
     }
 
     .btn-sm {
-      padding: 0.5rem 1rem;
+      padding: 0.5rem 0.875rem;
       font-size: 0.875rem;
+      min-height: 38px;
     }
 
     /* Ikony SVG */
@@ -210,7 +238,7 @@
     }
 
     /* ==========================================================================
-       NAWIGACJA (STICKY)
+       1. NAWIGACJA (STICKY - ZOPTYMALIZOWANA DLA PŁYNNOŚCI 60FPS)
        ========================================================================== */
     .header-nav {
       position: sticky;
@@ -218,33 +246,32 @@
       left: 0;
       width: 100%;
       z-index: 1000;
-      background-color: rgba(245, 243, 231, 0.96);
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
+      background-color: rgba(245, 243, 231, 0.98);
       border-bottom: 1px solid var(--color-border);
-      transition: var(--transition);
+      transform: translateZ(0);
+      backface-visibility: hidden;
     }
 
     .nav-container {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      height: 72px;
+      height: 66px;
     }
 
     .brand-logo {
       display: flex;
       align-items: center;
-      gap: 0.75rem;
+      gap: 0.625rem;
       font-family: var(--font-display);
-      font-size: 1.375rem;
+      font-size: 1.25rem;
       font-weight: 700;
       color: var(--color-dark);
     }
 
     .brand-logo-img {
-      width: 42px;
-      height: 42px;
+      width: 40px;
+      height: 40px;
       border-radius: var(--radius-full);
       object-fit: cover;
       border: 2px solid var(--color-primary);
@@ -254,7 +281,7 @@
       display: none;
       align-items: center;
       list-style: none;
-      gap: 1.75rem;
+      gap: 1.5rem;
     }
 
     .nav-link {
@@ -265,23 +292,8 @@
       padding: 0.25rem 0;
     }
 
-    .nav-link::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 0;
-      height: 2px;
-      background-color: var(--color-primary);
-      transition: var(--transition);
-    }
-
     .nav-link:hover {
       color: var(--color-primary);
-    }
-
-    .nav-link:hover::after {
-      width: 100%;
     }
 
     .nav-actions {
@@ -295,12 +307,11 @@
       flex-direction: column;
       justify-content: center;
       gap: 5px;
-      width: 40px;
-      height: 40px;
+      width: 42px;
+      height: 42px;
       background: transparent;
       border: 1px solid var(--color-border);
       border-radius: var(--radius-sm);
-      cursor: pointer;
       padding: 8px;
     }
 
@@ -309,7 +320,7 @@
       width: 100%;
       height: 2px;
       background-color: var(--color-dark);
-      transition: var(--transition);
+      transition: transform 0.2s ease, opacity 0.2s ease;
     }
 
     .hamburger-btn.active span:nth-child(1) {
@@ -324,138 +335,150 @@
       transform: translateY(-7px) rotate(-45deg);
     }
 
-    /* Mobile Drawer */
+    /* Mobile Drawer (Hardware-accelerated) */
     .mobile-nav {
       position: fixed;
-      top: 72px;
+      top: 66px;
       left: 0;
       width: 100%;
       background-color: var(--color-bg-light);
       border-bottom: 1px solid var(--color-border);
-      padding: 1.5rem;
+      padding: 1.25rem 1rem 1.5rem 1rem;
       display: flex;
       flex-direction: column;
-      gap: 1.25rem;
-      transform: translateY(-120%);
+      gap: 0.875rem;
+      transform: translate3d(0, -120%, 0);
       opacity: 0;
       visibility: hidden;
-      transition: all 0.3s ease;
+      transition: transform 0.25s ease-out, opacity 0.25s ease-out;
       box-shadow: var(--shadow-md);
       z-index: 999;
+      max-height: calc(100vh - 66px);
+      overflow-y: auto;
     }
 
     .mobile-nav.open {
-      transform: translateY(0);
+      transform: translate3d(0, 0, 0);
       opacity: 1;
       visibility: visible;
     }
 
     .mobile-nav a.mobile-link {
-      font-size: 1.125rem;
+      font-size: 1.0625rem;
       font-weight: 600;
       color: var(--color-dark);
-      padding: 0.5rem 0;
-      border-bottom: 1px solid rgba(196, 189, 150, 0.4);
+      padding: 0.625rem 0.25rem;
+      border-bottom: 1px solid rgba(196, 189, 150, 0.35);
     }
 
-    .mobile-nav a.mobile-link:hover {
+    .mobile-nav a.mobile-link:active {
       color: var(--color-primary);
-      padding-left: 0.5rem;
     }
 
     /* ==========================================================================
-       HERO SECTION
+       2. HERO SECTION
        ========================================================================== */
     .hero-section {
       position: relative;
-      min-height: calc(100vh - 72px);
+      min-height: calc(100vh - 66px);
       display: flex;
       align-items: center;
       background-color: var(--color-dark);
       color: var(--color-white);
       background-image: linear-gradient(
           to right,
-          rgba(26, 24, 15, 0.9) 0%,
-          rgba(26, 24, 15, 0.75) 55%,
-          rgba(26, 24, 15, 0.55) 100%
+          rgba(26, 24, 15, 0.92) 0%,
+          rgba(26, 24, 15, 0.8) 55%,
+          rgba(26, 24, 15, 0.6) 100%
         ),
         url('https://i.ibb.co/GfscN0zR/609038449-1464969045636300-6739837355693113367-n.jpg');
       background-size: cover;
-      background-position: center;
+      background-position: center center;
       background-repeat: no-repeat;
-      padding: 4rem 0;
+      padding: 3rem 0;
     }
 
     .hero-content {
       max-width: 680px;
+      width: 100%;
     }
 
     .hero-badge {
       display: inline-flex;
       align-items: center;
       gap: 0.5rem;
-      padding: 0.375rem 0.875rem;
+      padding: 0.3125rem 0.75rem;
       background-color: rgba(225, 124, 35, 0.2);
       border: 1px solid rgba(225, 124, 35, 0.6);
       border-radius: var(--radius-full);
-      font-size: 0.8125rem;
+      font-size: 0.75rem;
       font-weight: 600;
       letter-spacing: 0.05em;
       text-transform: uppercase;
       color: #ffd8b3;
-      margin-bottom: 1.5rem;
+      margin-bottom: 1.25rem;
+      max-width: 100%;
     }
 
     .hero-title {
-      font-size: 2.25rem;
+      font-size: clamp(1.875rem, 5vw, 3.5rem);
       font-weight: 700;
       color: var(--color-white);
-      line-height: 1.18;
-      margin-bottom: 1.25rem;
+      line-height: 1.15;
+      margin-bottom: 1rem;
       letter-spacing: -0.02em;
     }
 
     .hero-desc {
-      font-size: 1.125rem;
+      font-size: clamp(0.9375rem, 2.5vw, 1.125rem);
       color: #e5e2d3;
-      line-height: 1.65;
-      margin-bottom: 2rem;
+      line-height: 1.6;
+      margin-bottom: 1.75rem;
     }
 
     .hero-actions {
       display: flex;
-      flex-wrap: wrap;
-      gap: 1rem;
+      flex-direction: column;
+      gap: 0.75rem;
+      width: 100%;
+    }
+
+    @media (min-width: 480px) {
+      .hero-actions {
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 1rem;
+      }
     }
 
     /* ==========================================================================
-       PASEK ATUTÓW (TRUST BAR)
+       3. PASEK ATUTÓW (TRUST BAR)
        ========================================================================== */
     .trust-bar {
       background-color: var(--color-bg-sand);
       border-bottom: 1px solid var(--color-border);
-      padding: 1.75rem 0;
+      padding: 1.25rem 0;
     }
 
     .trust-grid {
       display: grid;
       grid-template-columns: 1fr;
-      gap: 1.25rem;
+      gap: 0.75rem;
     }
 
     .trust-item {
       display: flex;
       align-items: center;
-      gap: 0.875rem;
-      background-color: rgba(255, 255, 255, 0.45);
-      padding: 0.875rem 1rem;
+      gap: 0.75rem;
+      background-color: rgba(255, 255, 255, 0.5);
+      padding: 0.75rem 0.875rem;
       border-radius: var(--radius-sm);
       border: 1px solid rgba(196, 189, 150, 0.7);
     }
 
     .trust-icon-box {
-      width: 40px;
-      height: 40px;
+      width: 36px;
+      height: 36px;
       border-radius: var(--radius-sm);
       background-color: var(--color-primary);
       color: var(--color-white);
@@ -465,35 +488,42 @@
       flex-shrink: 0;
     }
 
+    .trust-icon-box svg {
+      width: 18px;
+      height: 18px;
+    }
+
     .trust-text {
-      font-size: 0.9375rem;
+      font-size: 0.875rem;
       font-weight: 600;
       color: var(--color-dark);
       line-height: 1.3;
     }
 
     /* ==========================================================================
-       SEKCJA O NAS
+       4. SEKCJA O NAS
        ========================================================================== */
     .about-section {
-      padding: 5rem 0;
+      padding: 3.5rem 0;
       background-color: var(--color-bg-light);
     }
 
     .about-grid {
       display: grid;
       grid-template-columns: 1fr;
-      gap: 3rem;
+      gap: 2rem;
       align-items: center;
     }
 
     .about-image-wrapper {
       position: relative;
+      width: 100%;
+      border-radius: var(--radius-lg);
     }
 
     .about-main-img {
       width: 100%;
-      height: 420px;
+      aspect-ratio: 4 / 3;
       object-fit: cover;
       border-radius: var(--radius-lg);
       border: 1px solid var(--color-border);
@@ -502,20 +532,20 @@
 
     .about-experience-card {
       position: absolute;
-      bottom: -20px;
-      right: 20px;
+      bottom: 12px;
+      right: 12px;
       background-color: var(--color-dark-surface);
       color: var(--color-white);
-      padding: 1.25rem 1.5rem;
+      padding: 0.875rem 1rem;
       border-radius: var(--radius-md);
       border: 1px solid rgba(225, 124, 35, 0.4);
       box-shadow: var(--shadow-lg);
-      max-width: 220px;
+      max-width: calc(100% - 24px);
     }
 
     .about-exp-number {
       font-family: var(--font-display);
-      font-size: 2rem;
+      font-size: 1.625rem;
       font-weight: 700;
       color: var(--color-primary);
       line-height: 1;
@@ -523,41 +553,43 @@
     }
 
     .about-exp-label {
-      font-size: 0.8125rem;
+      font-size: 0.75rem;
       color: #cfcbbe;
-      line-height: 1.4;
+      line-height: 1.35;
     }
 
     .about-text-content h2 {
-      font-size: 2rem;
-      margin-bottom: 1.25rem;
+      font-size: 1.75rem;
+      margin-bottom: 1rem;
     }
 
     .about-lead {
-      font-size: 1.125rem;
+      font-size: 1rem;
       font-weight: 500;
       color: var(--color-dark);
-      margin-bottom: 1rem;
-      line-height: 1.6;
+      margin-bottom: 0.875rem;
+      line-height: 1.55;
     }
 
     .about-desc {
       color: var(--color-text-muted);
-      margin-bottom: 1.5rem;
+      font-size: 0.9375rem;
+      margin-bottom: 1.25rem;
+      line-height: 1.6;
     }
 
     .about-highlights {
       display: grid;
       grid-template-columns: 1fr;
-      gap: 0.875rem;
-      margin-bottom: 2rem;
+      gap: 0.75rem;
+      margin-bottom: 1.75rem;
     }
 
     .about-highlight-item {
       display: flex;
       align-items: flex-start;
-      gap: 0.75rem;
-      font-size: 0.9375rem;
+      gap: 0.625rem;
+      font-size: 0.875rem;
       font-weight: 500;
       color: var(--color-dark);
     }
@@ -565,13 +597,15 @@
     .about-highlight-item svg {
       color: var(--color-primary);
       margin-top: 0.15rem;
+      width: 18px;
+      height: 18px;
     }
 
     /* ==========================================================================
-       SEKCJA OFERTA (KARTY)
+       5. SEKCJA OFERTA (KARTY)
        ========================================================================== */
     .offer-section {
-      padding: 5rem 0;
+      padding: 3.5rem 0;
       background-color: var(--color-bg-alt);
       border-top: 1px solid var(--color-border);
       border-bottom: 1px solid var(--color-border);
@@ -580,7 +614,7 @@
     .offer-grid {
       display: grid;
       grid-template-columns: 1fr;
-      gap: 1.5rem;
+      gap: 1.25rem;
     }
 
     .offer-card {
@@ -595,49 +629,49 @@
     }
 
     .offer-card:hover {
-      transform: translateY(-4px);
+      transform: translateY(-2px);
       box-shadow: var(--shadow-md);
       border-color: var(--color-primary);
     }
 
     .offer-card-body {
-      padding: 1.75rem;
+      padding: 1.5rem 1.25rem;
       display: flex;
       flex-direction: column;
       flex-grow: 1;
     }
 
     .offer-icon-wrapper {
-      width: 48px;
-      height: 48px;
+      width: 44px;
+      height: 44px;
       background-color: var(--color-primary-light);
       border-radius: var(--radius-sm);
       display: flex;
       align-items: center;
       justify-content: center;
       color: var(--color-primary);
-      margin-bottom: 1.25rem;
+      margin-bottom: 1rem;
       border: 1px solid rgba(225, 124, 35, 0.25);
     }
 
     .offer-card-title {
-      font-size: 1.3125rem;
-      margin-bottom: 0.75rem;
+      font-size: 1.25rem;
+      margin-bottom: 0.625rem;
       color: var(--color-dark);
     }
 
     .offer-card-text {
       color: var(--color-text-muted);
-      font-size: 0.9375rem;
-      line-height: 1.6;
-      margin-bottom: 1.25rem;
+      font-size: 0.875rem;
+      line-height: 1.55;
+      margin-bottom: 1rem;
       flex-grow: 1;
     }
 
     .offer-features {
       list-style: none;
       border-top: 1px solid #ede9dc;
-      padding-top: 1rem;
+      padding-top: 0.875rem;
       margin-bottom: 1.25rem;
       display: flex;
       flex-direction: column;
@@ -645,7 +679,7 @@
     }
 
     .offer-features li {
-      font-size: 0.875rem;
+      font-size: 0.8125rem;
       color: var(--color-text-main);
       display: flex;
       align-items: center;
@@ -656,13 +690,14 @@
       width: 14px;
       height: 14px;
       color: var(--color-primary);
+      flex-shrink: 0;
     }
 
     /* ==========================================================================
-       SEKCJA MINI ZOO
+       6. SEKCJA MINI ZOO
        ========================================================================== */
     .minizoo-section {
-      padding: 5rem 0;
+      padding: 3.5rem 0;
       background-color: var(--color-bg-light);
     }
 
@@ -670,43 +705,43 @@
       background-color: var(--color-dark-surface);
       color: var(--color-white);
       border-radius: var(--radius-lg);
-      padding: 3rem 2rem;
+      padding: 1.75rem 1.25rem;
       border: 1px solid rgba(196, 189, 150, 0.3);
       display: grid;
       grid-template-columns: 1fr;
-      gap: 2.5rem;
+      gap: 2rem;
       align-items: center;
     }
 
     .minizoo-box h2 {
       color: var(--color-white);
-      font-size: 2rem;
-      margin-bottom: 1rem;
+      font-size: 1.75rem;
+      margin-bottom: 0.875rem;
     }
 
     .minizoo-box p {
       color: #dfdbcc;
-      font-size: 1.0625rem;
-      margin-bottom: 1.5rem;
-      line-height: 1.65;
+      font-size: 0.9375rem;
+      margin-bottom: 1.25rem;
+      line-height: 1.6;
     }
 
     .animals-chips {
       display: flex;
       flex-wrap: wrap;
-      gap: 0.625rem;
-      margin-bottom: 2rem;
+      gap: 0.5rem;
+      margin-bottom: 1.75rem;
     }
 
     .animal-chip {
       background-color: rgba(255, 255, 255, 0.1);
       border: 1px solid rgba(255, 255, 255, 0.2);
-      padding: 0.375rem 0.875rem;
+      padding: 0.3125rem 0.75rem;
       border-radius: var(--radius-full);
-      font-size: 0.875rem;
+      font-size: 0.8125rem;
       font-weight: 500;
       color: var(--color-white);
-      display: flex;
+      display: inline-flex;
       align-items: center;
       gap: 0.375rem;
     }
@@ -715,34 +750,37 @@
       width: 14px;
       height: 14px;
       color: var(--color-primary);
+      flex-shrink: 0;
     }
 
     .minizoo-images-dual {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 1rem;
+      gap: 0.75rem;
+      width: 100%;
     }
 
     .minizoo-dual-img {
       width: 100%;
-      height: 220px;
+      aspect-ratio: 16 / 11;
       object-fit: cover;
       border-radius: var(--radius-md);
       border: 1px solid rgba(255, 255, 255, 0.15);
     }
 
     /* ==========================================================================
-       SEKCJA GALERIA (CZYSTE ZDJĘCIA BEZ PODPISÓW + SZYBKIE ŁADOWANIE)
+       7. SEKCJA GALERIA (SZYBKI LIGHTBOX I RESPONSYWNY GRID)
        ========================================================================== */
     .gallery-section {
-      padding: 5rem 0;
+      padding: 3.5rem 0;
       background-color: var(--color-bg-sand);
     }
 
     .gallery-grid {
       display: grid;
       grid-template-columns: 1fr;
-      gap: 1.25rem;
+      gap: 1rem;
+      width: 100%;
     }
 
     .gallery-item {
@@ -751,14 +789,16 @@
       overflow: hidden;
       background-color: #cbcaa6;
       cursor: pointer;
-      height: 280px;
+      aspect-ratio: 4 / 3;
       box-shadow: var(--shadow-sm);
       border: 1px solid var(--color-border);
-      transition: var(--transition);
+      transition: transform 0.2s ease, border-color 0.2s ease;
+      touch-action: manipulation;
+      contain: layout paint;
     }
 
     .gallery-item:hover {
-      transform: translateY(-4px);
+      transform: translateY(-2px);
       box-shadow: var(--shadow-md);
       border-color: var(--color-primary);
     }
@@ -767,48 +807,43 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
-      transition: transform 0.4s ease;
+      transition: transform 0.3s ease;
     }
 
     .gallery-item:hover img {
-      transform: scale(1.04);
+      transform: scale(1.03);
     }
 
     .gallery-zoom-badge {
       position: absolute;
-      bottom: 14px;
-      right: 14px;
-      width: 36px;
-      height: 36px;
+      bottom: 10px;
+      right: 10px;
+      width: 32px;
+      height: 32px;
       border-radius: var(--radius-full);
-      background: rgba(38, 35, 22, 0.75);
+      background: rgba(38, 35, 22, 0.8);
       color: var(--color-white);
       display: flex;
       align-items: center;
       justify-content: center;
-      opacity: 0;
-      transform: scale(0.85);
-      transition: var(--transition);
+      opacity: 0.85;
       border: 1px solid rgba(255, 255, 255, 0.3);
+      pointer-events: none;
     }
 
-    .gallery-item:hover .gallery-zoom-badge {
-      opacity: 1;
-      transform: scale(1);
-    }
-
-    /* Lightbox modal (czysty, bez zbędnych podpisów) */
+    /* Lightbox modal (czysty, bez wycieków poza ekran) */
     .lightbox-modal {
       position: fixed;
       inset: 0;
-      background-color: rgba(18, 16, 10, 0.95);
+      background-color: rgba(18, 16, 10, 0.96);
       z-index: 2000;
       display: none;
       align-items: center;
       justify-content: center;
-      padding: 1.5rem;
+      padding: 1rem;
       opacity: 0;
-      transition: opacity 0.25s ease;
+      transition: opacity 0.2s ease;
+      touch-action: none;
     }
 
     .lightbox-modal.active {
@@ -818,7 +853,7 @@
 
     .lightbox-content {
       position: relative;
-      max-width: 92vw;
+      max-width: 100%;
       max-height: 90vh;
       display: flex;
       align-items: center;
@@ -827,56 +862,56 @@
 
     .lightbox-img {
       max-width: 100%;
-      max-height: 85vh;
+      max-height: 82vh;
       border-radius: var(--radius-sm);
-      box-shadow: 0 12px 48px rgba(0, 0, 0, 0.7);
+      box-shadow: 0 10px 36px rgba(0, 0, 0, 0.8);
       object-fit: contain;
     }
 
     .lightbox-btn {
-      position: absolute;
-      background: rgba(43, 40, 29, 0.8);
-      border: 1px solid rgba(255, 255, 255, 0.2);
+      position: fixed;
+      background: rgba(43, 40, 29, 0.85);
+      border: 1px solid rgba(255, 255, 255, 0.25);
       color: var(--color-white);
-      width: 46px;
-      height: 46px;
+      width: 44px;
+      height: 44px;
       border-radius: var(--radius-full);
       display: flex;
       align-items: center;
       justify-content: center;
       cursor: pointer;
       transition: var(--transition);
-      z-index: 10;
+      z-index: 2010;
+      touch-action: manipulation;
     }
 
-    .lightbox-btn:hover {
+    .lightbox-btn:hover, .lightbox-btn:active {
       background: var(--color-primary);
       border-color: var(--color-primary);
-      transform: scale(1.08);
     }
 
     .lightbox-close {
-      top: -50px;
-      right: 0;
+      top: 14px;
+      right: 14px;
     }
 
     .lightbox-prev {
-      left: 12px;
+      left: 10px;
       top: 50%;
       transform: translateY(-50%);
     }
 
     .lightbox-next {
-      right: 12px;
+      right: 10px;
       top: 50%;
       transform: translateY(-50%);
     }
 
     /* ==========================================================================
-       SEKCJA IMPREZY OKOLICZNOŚCIOWE
+       8. SEKCJA IMPREZY OKOLICZNOŚCIOWE
        ========================================================================== */
     .events-section {
-      padding: 5rem 0;
+      padding: 3.5rem 0;
       background-color: var(--color-bg-light);
       position: relative;
     }
@@ -885,7 +920,7 @@
       background-color: var(--color-bg-alt);
       border: 1px solid var(--color-border);
       border-radius: var(--radius-lg);
-      padding: 3rem 2rem;
+      padding: 2rem 1.25rem;
       text-align: center;
       max-width: 960px;
       margin: 0 auto;
@@ -893,15 +928,15 @@
     }
 
     .events-card-banner h2 {
-      font-size: 2rem;
-      margin-bottom: 1rem;
+      font-size: 1.75rem;
+      margin-bottom: 0.875rem;
     }
 
     .events-card-banner p {
       max-width: 680px;
-      margin: 0 auto 2rem auto;
+      margin: 0 auto 1.5rem auto;
       color: var(--color-text-muted);
-      font-size: 1.0625rem;
+      font-size: 0.9375rem;
       line-height: 1.6;
     }
 
@@ -909,34 +944,36 @@
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
-      gap: 0.75rem;
-      margin-bottom: 2.5rem;
+      gap: 0.5rem;
+      margin-bottom: 2rem;
     }
 
     .event-pill {
       background-color: var(--color-white);
       border: 1px solid var(--color-border);
-      padding: 0.5rem 1.125rem;
+      padding: 0.4375rem 0.875rem;
       border-radius: var(--radius-full);
-      font-size: 0.875rem;
+      font-size: 0.8125rem;
       font-weight: 600;
       color: var(--color-dark);
       display: inline-flex;
       align-items: center;
-      gap: 0.5rem;
+      gap: 0.4375rem;
+      max-width: 100%;
     }
 
     .event-pill svg {
-      width: 16px;
-      height: 16px;
+      width: 14px;
+      height: 14px;
       color: var(--color-primary);
+      flex-shrink: 0;
     }
 
     /* ==========================================================================
-       SEKCJA KONTAKT (BEZ FORMULARZA — CZYSTY, PRZEJRZYSTY UKŁAD)
+       9. SEKCJA KONTAKT & MAPA GOOGLE
        ========================================================================== */
     .contact-section {
-      padding: 5rem 0;
+      padding: 3.5rem 0;
       background-color: var(--color-bg-alt);
       border-top: 1px solid var(--color-border);
     }
@@ -944,14 +981,14 @@
     .contact-container-grid {
       display: grid;
       grid-template-columns: 1fr;
-      gap: 2rem;
+      gap: 1.5rem;
       align-items: stretch;
     }
 
     .contact-card-main {
       background-color: var(--color-white);
       border-radius: var(--radius-lg);
-      padding: 2.5rem 2rem;
+      padding: 1.75rem 1.25rem;
       border: 1px solid var(--color-border);
       box-shadow: var(--shadow-sm);
       display: flex;
@@ -960,32 +997,32 @@
     }
 
     .contact-card-main h3 {
-      font-size: 1.625rem;
-      margin-bottom: 0.5rem;
+      font-size: 1.5rem;
+      margin-bottom: 0.375rem;
     }
 
     .contact-card-main p.contact-lead {
       color: var(--color-text-muted);
-      font-size: 0.9375rem;
-      margin-bottom: 2rem;
+      font-size: 0.875rem;
+      margin-bottom: 1.5rem;
     }
 
     .contact-items-list {
       display: flex;
       flex-direction: column;
-      gap: 1.5rem;
-      margin-bottom: 2.5rem;
+      gap: 1.25rem;
+      margin-bottom: 2rem;
     }
 
     .contact-row {
       display: flex;
       align-items: flex-start;
-      gap: 1rem;
+      gap: 0.875rem;
     }
 
     .contact-icon-bubble {
-      width: 48px;
-      height: 48px;
+      width: 42px;
+      height: 42px;
       background-color: var(--color-primary-light);
       border-radius: var(--radius-md);
       display: flex;
@@ -999,10 +1036,11 @@
     .contact-info-text {
       display: flex;
       flex-direction: column;
+      min-width: 0;
     }
 
     .contact-label-tag {
-      font-size: 0.8125rem;
+      font-size: 0.75rem;
       text-transform: uppercase;
       letter-spacing: 0.06em;
       color: var(--color-text-muted);
@@ -1010,10 +1048,18 @@
     }
 
     .contact-primary-val {
-      font-size: 1.125rem;
+      font-size: 1rem;
       font-weight: 700;
       color: var(--color-dark);
       margin-top: 0.15rem;
+      overflow-wrap: break-word;
+      word-break: break-word;
+    }
+
+    .contact-primary-val a {
+      color: var(--color-dark);
+      word-break: break-word;
+      overflow-wrap: break-word;
     }
 
     .contact-primary-val a:hover {
@@ -1023,7 +1069,7 @@
     .contact-actions-row {
       display: flex;
       flex-direction: column;
-      gap: 0.875rem;
+      gap: 0.75rem;
     }
 
     .map-frame-wrapper {
@@ -1031,43 +1077,45 @@
       overflow: hidden;
       border: 1px solid var(--color-border);
       box-shadow: var(--shadow-sm);
-      min-height: 420px;
+      min-height: 300px;
+      aspect-ratio: 16 / 10;
       background-color: #e5e3d7;
+      contain: content;
     }
 
     .map-frame-wrapper iframe {
       width: 100%;
       height: 100%;
-      min-height: 420px;
+      min-height: 300px;
       border: 0;
       display: block;
     }
 
     /* ==========================================================================
-       STOPKA
+       10. STOPKA
        ========================================================================== */
     .site-footer {
       background-color: var(--color-dark);
       color: #d1ccb8;
-      padding: 4rem 0 2rem 0;
+      padding: 3rem 0 1.5rem 0;
       border-top: 2px solid var(--color-primary);
     }
 
     .footer-grid {
       display: grid;
       grid-template-columns: 1fr;
-      gap: 2.5rem;
-      margin-bottom: 3rem;
+      gap: 2rem;
+      margin-bottom: 2.5rem;
     }
 
     .footer-brand h4 {
       color: var(--color-white);
-      font-size: 1.5rem;
-      margin-bottom: 0.75rem;
+      font-size: 1.375rem;
+      margin-bottom: 0.625rem;
     }
 
     .footer-brand p {
-      font-size: 0.9375rem;
+      font-size: 0.875rem;
       line-height: 1.6;
       color: #a8a391;
       max-width: 320px;
@@ -1075,11 +1123,11 @@
 
     .footer-heading {
       color: var(--color-white);
-      font-size: 1.0625rem;
+      font-size: 1rem;
       font-weight: 600;
-      margin-bottom: 1.25rem;
+      margin-bottom: 1rem;
       position: relative;
-      padding-bottom: 0.5rem;
+      padding-bottom: 0.375rem;
     }
 
     .footer-heading::after {
@@ -1087,7 +1135,7 @@
       position: absolute;
       bottom: 0;
       left: 0;
-      width: 32px;
+      width: 28px;
       height: 2px;
       background-color: var(--color-primary);
     }
@@ -1096,64 +1144,93 @@
       list-style: none;
       display: flex;
       flex-direction: column;
-      gap: 0.625rem;
+      gap: 0.5rem;
     }
 
     .footer-links a {
       color: #b8b3a0;
-      font-size: 0.9375rem;
+      font-size: 0.875rem;
     }
 
     .footer-links a:hover {
       color: var(--color-white);
-      padding-left: 4px;
     }
 
     .footer-bottom {
       border-top: 1px solid rgba(255, 255, 255, 0.1);
-      padding-top: 2rem;
+      padding-top: 1.5rem;
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 1rem;
+      gap: 0.75rem;
       text-align: center;
-      font-size: 0.875rem;
+      font-size: 0.8125rem;
       color: #8c8777;
     }
 
     /* ==========================================================================
-       ANIMACJE REVEAL (INTERSECTION OBSERVER)
+       ANIMACJE REVEAL (PŁYNNE 60FPS Z TRANSLATE3D)
        ========================================================================== */
     .reveal {
       opacity: 0;
-      transform: translateY(20px);
-      transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1), transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+      transform: translate3d(0, 16px, 0);
+      transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1), transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+      will-change: opacity, transform;
     }
 
     .reveal.active {
       opacity: 1;
-      transform: translateY(0);
+      transform: translate3d(0, 0, 0);
+      will-change: auto;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .reveal {
+        opacity: 1;
+        transform: none;
+        transition: none;
+        will-change: auto;
+      }
+      * {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+      }
     }
 
     /* ==========================================================================
        MEDIA QUERIES (RESPONSYWNOŚĆ)
        ========================================================================== */
-    /* Tablet: min-width: 768px */
-    @media (min-width: 768px) {
+    /* Tablet: min-width: 640px */
+    @media (min-width: 640px) {
       .section-title {
-        font-size: 2.375rem;
-      }
-
-      .hero-title {
-        font-size: 3rem;
+        font-size: 2.125rem;
       }
 
       .trust-grid {
         grid-template-columns: repeat(2, 1fr);
       }
 
+      .gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    /* Tablet poziomo / Średni ekran: min-width: 768px */
+    @media (min-width: 768px) {
+      .about-section, .offer-section, .minizoo-section, .gallery-section, .events-section, .contact-section {
+        padding: 4.5rem 0;
+      }
+
       .about-grid {
         grid-template-columns: 1fr 1fr;
+        gap: 3rem;
+      }
+
+      .about-experience-card {
+        bottom: -16px;
+        right: 16px;
+        padding: 1.125rem 1.375rem;
+        max-width: 220px;
       }
 
       .offer-grid {
@@ -1162,10 +1239,7 @@
 
       .minizoo-box {
         grid-template-columns: 1.1fr 0.9fr;
-      }
-
-      .gallery-grid {
-        grid-template-columns: repeat(2, 1fr);
+        padding: 2.5rem 2rem;
       }
 
       .contact-container-grid {
@@ -1186,14 +1260,14 @@
       }
     }
 
-    /* Desktop: min-width: 1100px */
-    @media (min-width: 1100px) {
+    /* Desktop: min-width: 1024px */
+    @media (min-width: 1024px) {
       .section-title {
-        font-size: 2.625rem;
+        font-size: 2.5rem;
       }
 
-      .hero-title {
-        font-size: 3.5rem;
+      .nav-container {
+        height: 72px;
       }
 
       .nav-menu {
@@ -1233,13 +1307,13 @@
        ========================================================================== -->
   <header class="header-nav" id="headerNav">
     <div class="container nav-container">
-      <a href="#hero" class="brand-logo" id="brandLogo">
+      <a href="#hero" class="brand-logo" id="brandLogo" aria-label="Leśne Ranczo - Strona główna">
         <img 
           src="https://i.ibb.co/20HLCdC0/302872249-488522279947653-4694132767440406748-n.png" 
           alt="Leśne Ranczo logo" 
           class="brand-logo-img" 
-          width="42" 
-          height="42"
+          width="40" 
+          height="40"
           decoding="async"
         />
         <span>Leśne Ranczo</span>
@@ -1281,7 +1355,7 @@
     <a href="#galeria" class="mobile-link">Galeria</a>
     <a href="#imprezy" class="mobile-link">Imprezy okolicznościowe</a>
     <a href="#kontakt" class="mobile-link">Kontakt</a>
-    <a href="tel:795941264" class="btn btn-primary" style="margin-top: 0.5rem;">
+    <a href="tel:795941264" class="btn btn-primary" style="margin-top: 0.5rem; width: 100%;">
       <svg class="icon-svg" viewBox="0 0 24 24">
         <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
       </svg>
@@ -1405,7 +1479,7 @@
             alt="Konie w stajni Leśnego Rancza" 
             class="about-main-img" 
             width="600" 
-            height="420"
+            height="450"
             loading="lazy" 
             decoding="async"
           />
@@ -1530,7 +1604,7 @@
               </li>
               <li>
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                Atrakcja dla rodzin i grup zorganizowanych
+                Atrakcja dla rodzin i grup
               </li>
               <li>
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
@@ -1630,7 +1704,7 @@
               </li>
               <li>
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                Klimatyczne oświetlenie i strefa wypoczynku
+                Klimatyczne oświetlenie i strefa relaksu
               </li>
             </ul>
             <a href="tel:795941264" class="btn btn-outline-dark btn-sm">Zarezerwuj altanę</a>
@@ -1740,7 +1814,7 @@
   </section>
 
   <!-- ==========================================================================
-       7. GALERIA (11 ZDJĘĆ — BEZ PODPISÓW, SZYBKIE ŁADOWANIE + LIGHTBOX)
+       7. GALERIA (11 ZDJĘĆ — BEZ PODPISÓW, PŁYNNE ŁADOWANIE + LIGHTBOX)
        ========================================================================== -->
   <section class="gallery-section" id="galeria">
     <div class="container">
@@ -1759,11 +1833,11 @@
             src="https://i.ibb.co/GfscN0zR/609038449-1464969045636300-6739837355693113367-n.jpg" 
             alt="Leśne Ranczo fotografia 1" 
             width="400" 
-            height="280"
+            height="300"
             decoding="async"
           />
           <div class="gallery-zoom-badge">
-            <svg class="icon-svg" viewBox="0 0 24 24" style="width: 18px; height: 18px;">
+            <svg class="icon-svg" viewBox="0 0 24 24" style="width: 16px; height: 16px;">
               <circle cx="11" cy="11" r="8"></circle>
               <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
               <line x1="11" y1="8" x2="11" y2="14"></line>
@@ -1778,12 +1852,12 @@
             src="https://i.ibb.co/MDNTv24z/607651433-1465318545601350-8530878371796856345-n.jpg" 
             alt="Leśne Ranczo fotografia 2" 
             width="400" 
-            height="280"
+            height="300"
             loading="lazy" 
             decoding="async"
           />
           <div class="gallery-zoom-badge">
-            <svg class="icon-svg" viewBox="0 0 24 24" style="width: 18px; height: 18px;">
+            <svg class="icon-svg" viewBox="0 0 24 24" style="width: 16px; height: 16px;">
               <circle cx="11" cy="11" r="8"></circle>
               <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
               <line x1="11" y1="8" x2="11" y2="14"></line>
@@ -1798,12 +1872,12 @@
             src="https://i.ibb.co/p67Vw9pv/607984508-1465319548934583-7865910909167044656-n.jpg" 
             alt="Leśne Ranczo fotografia 3" 
             width="400" 
-            height="280"
+            height="300"
             loading="lazy" 
             decoding="async"
           />
           <div class="gallery-zoom-badge">
-            <svg class="icon-svg" viewBox="0 0 24 24" style="width: 18px; height: 18px;">
+            <svg class="icon-svg" viewBox="0 0 24 24" style="width: 16px; height: 16px;">
               <circle cx="11" cy="11" r="8"></circle>
               <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
               <line x1="11" y1="8" x2="11" y2="14"></line>
@@ -1818,12 +1892,12 @@
             src="https://i.ibb.co/S4MRzj3n/611351892-1466665888799949-3252698607859612541-n.jpg" 
             alt="Leśne Ranczo fotografia 4" 
             width="400" 
-            height="280"
+            height="300"
             loading="lazy" 
             decoding="async"
           />
           <div class="gallery-zoom-badge">
-            <svg class="icon-svg" viewBox="0 0 24 24" style="width: 18px; height: 18px;">
+            <svg class="icon-svg" viewBox="0 0 24 24" style="width: 16px; height: 16px;">
               <circle cx="11" cy="11" r="8"></circle>
               <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
               <line x1="11" y1="8" x2="11" y2="14"></line>
@@ -1838,12 +1912,12 @@
             src="https://i.ibb.co/9H4Fq79n/615181345-1471288871670984-6046379861698716303-n.jpg" 
             alt="Leśne Ranczo fotografia 5" 
             width="400" 
-            height="280"
+            height="300"
             loading="lazy" 
             decoding="async"
           />
           <div class="gallery-zoom-badge">
-            <svg class="icon-svg" viewBox="0 0 24 24" style="width: 18px; height: 18px;">
+            <svg class="icon-svg" viewBox="0 0 24 24" style="width: 16px; height: 16px;">
               <circle cx="11" cy="11" r="8"></circle>
               <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
               <line x1="11" y1="8" x2="11" y2="14"></line>
@@ -1858,12 +1932,12 @@
             src="https://i.ibb.co/ZRKGNdYR/614936029-1471289075004297-6848450985562526713-n.jpg" 
             alt="Leśne Ranczo fotografia 6" 
             width="400" 
-            height="280"
+            height="300"
             loading="lazy" 
             decoding="async"
           />
           <div class="gallery-zoom-badge">
-            <svg class="icon-svg" viewBox="0 0 24 24" style="width: 18px; height: 18px;">
+            <svg class="icon-svg" viewBox="0 0 24 24" style="width: 16px; height: 16px;">
               <circle cx="11" cy="11" r="8"></circle>
               <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
               <line x1="11" y1="8" x2="11" y2="14"></line>
@@ -1878,12 +1952,12 @@
             src="https://i.ibb.co/WWxq9sb1/668980813-1549732900493247-5120288288500126908-n.jpg" 
             alt="Leśne Ranczo fotografia 7" 
             width="400" 
-            height="280"
+            height="300"
             loading="lazy" 
             decoding="async"
           />
           <div class="gallery-zoom-badge">
-            <svg class="icon-svg" viewBox="0 0 24 24" style="width: 18px; height: 18px;">
+            <svg class="icon-svg" viewBox="0 0 24 24" style="width: 16px; height: 16px;">
               <circle cx="11" cy="11" r="8"></circle>
               <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
               <line x1="11" y1="8" x2="11" y2="14"></line>
@@ -1898,12 +1972,12 @@
             src="https://i.ibb.co/35txggGM/663257041-1549732963826574-6938941205199343473-n.jpg" 
             alt="Leśne Ranczo fotografia 8" 
             width="400" 
-            height="280"
+            height="300"
             loading="lazy" 
             decoding="async"
           />
           <div class="gallery-zoom-badge">
-            <svg class="icon-svg" viewBox="0 0 24 24" style="width: 18px; height: 18px;">
+            <svg class="icon-svg" viewBox="0 0 24 24" style="width: 16px; height: 16px;">
               <circle cx="11" cy="11" r="8"></circle>
               <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
               <line x1="11" y1="8" x2="11" y2="14"></line>
@@ -1918,12 +1992,12 @@
             src="https://i.ibb.co/Jjcm24V9/670416101-1552928280173709-627670651132419609-n.jpg" 
             alt="Leśne Ranczo fotografia 9" 
             width="400" 
-            height="280"
+            height="300"
             loading="lazy" 
             decoding="async"
           />
           <div class="gallery-zoom-badge">
-            <svg class="icon-svg" viewBox="0 0 24 24" style="width: 18px; height: 18px;">
+            <svg class="icon-svg" viewBox="0 0 24 24" style="width: 16px; height: 16px;">
               <circle cx="11" cy="11" r="8"></circle>
               <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
               <line x1="11" y1="8" x2="11" y2="14"></line>
@@ -1938,12 +2012,12 @@
             src="https://i.ibb.co/HLf9W3ZM/670908395-1555717333228137-5290889338362191395-n.jpg" 
             alt="Leśne Ranczo fotografia 10" 
             width="400" 
-            height="280"
+            height="300"
             loading="lazy" 
             decoding="async"
           />
           <div class="gallery-zoom-badge">
-            <svg class="icon-svg" viewBox="0 0 24 24" style="width: 18px; height: 18px;">
+            <svg class="icon-svg" viewBox="0 0 24 24" style="width: 16px; height: 16px;">
               <circle cx="11" cy="11" r="8"></circle>
               <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
               <line x1="11" y1="8" x2="11" y2="14"></line>
@@ -1958,12 +2032,12 @@
             src="https://i.ibb.co/8LSLJGB6/673785740-1559932129473324-259998163420739064-n.jpg" 
             alt="Leśne Ranczo fotografia 11" 
             width="400" 
-            height="280"
+            height="300"
             loading="lazy" 
             decoding="async"
           />
           <div class="gallery-zoom-badge">
-            <svg class="icon-svg" viewBox="0 0 24 24" style="width: 18px; height: 18px;">
+            <svg class="icon-svg" viewBox="0 0 24 24" style="width: 16px; height: 16px;">
               <circle cx="11" cy="11" r="8"></circle>
               <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
               <line x1="11" y1="8" x2="11" y2="14"></line>
@@ -1977,16 +2051,16 @@
 
   <!-- Lightbox Modal -->
   <div class="lightbox-modal" id="lightboxModal" role="dialog" aria-modal="true" aria-label="Podgląd zdjęcia">
+    <button class="lightbox-btn lightbox-close" id="lightboxCloseBtn" aria-label="Zamknij podgląd">
+      <svg class="icon-svg" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+    </button>
+    <button class="lightbox-btn lightbox-prev" id="lightboxPrevBtn" aria-label="Poprzednie zdjęcie">
+      <svg class="icon-svg" viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"></polyline></svg>
+    </button>
+    <button class="lightbox-btn lightbox-next" id="lightboxNextBtn" aria-label="Następne zdjęcie">
+      <svg class="icon-svg" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"></polyline></svg>
+    </button>
     <div class="lightbox-content">
-      <button class="lightbox-btn lightbox-close" id="lightboxCloseBtn" aria-label="Zamknij podgląd">
-        <svg class="icon-svg" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
-      </button>
-      <button class="lightbox-btn lightbox-prev" id="lightboxPrevBtn" aria-label="Poprzednie zdjęcie">
-        <svg class="icon-svg" viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"></polyline></svg>
-      </button>
-      <button class="lightbox-btn lightbox-next" id="lightboxNextBtn" aria-label="Następne zdjęcie">
-        <svg class="icon-svg" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"></polyline></svg>
-      </button>
       <img src="" alt="Powiększone zdjęcie Leśne Ranczo" class="lightbox-img" id="lightboxImg" />
     </div>
   </div>
@@ -2177,7 +2251,7 @@
   </footer>
 
   <!-- ==========================================================================
-       SKRYPTY JAVASCRIPT (HAMBURGER, OBSERVER, SZYBKI LIGHTBOX)
+       SKRYPTY JAVASCRIPT (SZYBKIE, LEKKIE, 60FPS)
        ========================================================================== -->
   <script>
     document.addEventListener('DOMContentLoaded', function() {
@@ -2209,7 +2283,7 @@
         }
       });
 
-      // 2. Intersection Observer (Animacja Reveal)
+      // 2. Intersection Observer (Płynna animacja bez lagów)
       const reveals = document.querySelectorAll('.reveal');
       if ('IntersectionObserver' in window) {
         const revealObserver = new IntersectionObserver(function(entries, observer) {
@@ -2220,8 +2294,8 @@
             }
           });
         }, {
-          threshold: 0.08,
-          rootMargin: '0px 0px -20px 0px'
+          threshold: 0.05,
+          rootMargin: '100px 0px 50px 0px'
         });
 
         reveals.forEach(function(el) {
@@ -2233,7 +2307,7 @@
         });
       }
 
-      // 3. Galeria & Szybki Lightbox JS (bez podpisów tekstowych)
+      // 3. Galeria & Zoptymalizowany Lightbox JS
       const galleryUrls = [
         "https://i.ibb.co/GfscN0zR/609038449-1464969045636300-6739837355693113367-n.jpg",
         "https://i.ibb.co/MDNTv24z/607651433-1465318545601350-8530878371796856345-n.jpg",
