@@ -5,10 +5,22 @@ import {defineConfig} from 'vite';
 
 export default defineConfig(() => {
   return {
+    base: './',
     plugins: [react(), tailwindcss()],
     resolve: {
       alias: {
         '@': path.resolve(__dirname, '.'),
+      },
+    },
+    build: {
+      rollupOptions: {
+        input: {
+          main: path.resolve(__dirname, 'index.html'),
+          blog: path.resolve(__dirname, 'blog/index.html'),
+          postBonfire: path.resolve(__dirname, 'blog/ognisko-z-muzyka-lesne-ranczo/index.html'),
+          postCarriage: path.resolve(__dirname, 'blog/przejazdzki-bryczka-kurpiowszczyzna/index.html'),
+          postHorse: path.resolve(__dirname, 'blog/jazda-konna-w-siodle-ostroleka/index.html'),
+        },
       },
     },
     server: {
