@@ -1,6 +1,6 @@
 {
   "name": "Leśne Ranczo",
-  "description": "Gospodarstwo Agroturystyczne Leśne Ranczo w Olszewce koło Ostrołęki. Jazda konna, przejażdżki bryczką, mini zoo, kajaki i imprezy okolicznościowe.",
+  "description": "Gospodarstwo Agroturystyczne Leśne Ranczo w Olszewce koło Ostrołęki — ogniska przy muzyce, przejażdżki bryczką, jazda konna w siodle, mini zoo i sielski wypoczynek na ranczu.",
   "requestFramePermissions": [],
   "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
 }
