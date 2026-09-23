@@ -715,41 +715,44 @@
 <body>
 
   <!-- NAWIGACJA -->
-  <header class="header-nav" id="headerNav">
+  <header class="header-nav" id="header">
     <div class="container nav-container">
-      <a href="../../" class="brand-logo" aria-label="Leśne Ranczo - Strona główna">
+      <a href="/" class="brand-logo" aria-label="Leśne Ranczo - Strona główna">
         <img 
           src="https://i.ibb.co/20HLCdC0/302872249-488522279947653-4694132767440406748-n.png" 
           alt="Leśne Ranczo logo" 
           class="brand-logo-img" 
           width="40" 
           height="40" 
+          decoding="async"
         />
         <span>Leśne Ranczo</span>
       </a>
 
       <nav aria-label="Główna nawigacja">
-        <ul class="nav-menu">
-          <li><a href="../../#wypoczynek" class="nav-link">Biesiady & Ognisko</a></li>
-          <li><a href="../../#oferta" class="nav-link">Bryczka & Konie</a></li>
-          <li><a href="../../#o-nas" class="nav-link">O nas</a></li>
-          <li><a href="../../#oferta" class="nav-link">Oferta</a></li>
-          <li><a href="../../#imprezy" class="nav-link">Imprezy</a></li>
-          <li><a href="../" class="nav-link active">Blog</a></li>
-          <li><a href="../../#kontakt" class="nav-link">Kontakt</a></li>
+        <ul class="nav-menu" id="desktopNav">
+          <li><a href="/ognisko-altana/" class="nav-link">Ognisko & Altana</a></li>
+          <li><a href="/bryczka/" class="nav-link">Bryczka</a></li>
+          <li><a href="/jazda-konna/" class="nav-link">Jazda konna</a></li>
+          <li><a href="/mini-zoo/" class="nav-link">Mini zoo</a></li>
+          <li><a href="/kajaki/" class="nav-link">Kajaki</a></li>
+          <li><a href="/imprezy-okolicznosciowe/" class="nav-link">Imprezy</a></li>
+          <li><a href="/blog/" class="nav-link active">Blog</a></li>
+          <li><a href="/#galeria" class="nav-link">Galeria</a></li>
+          <li><a href="/#kontakt" class="nav-link">Kontakt</a></li>
         </ul>
       </nav>
 
       <div class="nav-actions">
-        <a href="tel:795941264" class="btn btn-primary" style="padding: 0.5rem 1rem; font-size: 0.875rem;">
-          <svg class="icon-svg" viewBox="0 0 24 24" style="width: 1rem; height: 1rem;">
+        <a href="tel:795941264" class="btn btn-primary btn-sm" id="navPhoneCta" aria-label="Zadzwoń do Leśnego Rancza">
+          <svg class="icon-svg" viewBox="0 0 24 24">
             <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
           </svg>
           <span>795 941 264</span>
         </a>
       </div>
 
-      <button class="hamburger-btn" id="mobileMenuBtn" aria-label="Otwórz menu nawigacji" aria-expanded="false">
+      <button class="hamburger-btn" id="hamburgerBtn" aria-label="Otwórz menu mobilne" aria-expanded="false">
         <span></span>
         <span></span>
         <span></span>
@@ -759,13 +762,15 @@
 
   <!-- Mobile Drawer -->
   <div class="mobile-nav" id="mobileNav">
-    <a href="../../#wypoczynek" class="mobile-link">Biesiady & Ognisko przy muzyce</a>
-    <a href="../../#oferta" class="mobile-link">Przejażdżki bryczką & W siodle</a>
-    <a href="../../#o-nas" class="mobile-link">O nas</a>
-    <a href="../../#oferta" class="mobile-link">Oferta rancza</a>
-    <a href="../../#imprezy" class="mobile-link">Imprezy okolicznościowe</a>
-    <a href="../" class="mobile-link" style="color: var(--color-primary); font-weight: 700;">Blog & Artykuły</a>
-    <a href="../../#kontakt" class="mobile-link">Kontakt i dojazd</a>
+    <a href="/ognisko-altana/" class="mobile-link">Ognisko & Altana biesiadna</a>
+    <a href="/bryczka/" class="mobile-link">Przejażdżki bryczką</a>
+    <a href="/jazda-konna/" class="mobile-link">Jazda konna & W siodle</a>
+    <a href="/mini-zoo/" class="mobile-link">Mini zoo zagrodowe</a>
+    <a href="/kajaki/" class="mobile-link">Spływy kajakowe</a>
+    <a href="/imprezy-okolicznosciowe/" class="mobile-link">Imprezy okolicznościowe</a>
+    <a href="/blog/" class="mobile-link active">Blog i poradniki</a>
+    <a href="/#galeria" class="mobile-link">Galeria zdjęć</a>
+    <a href="/#kontakt" class="mobile-link">Kontakt i dojazd</a>
     <a href="tel:795941264" class="btn btn-primary" style="margin-top: 0.5rem; width: 100%;">
       <svg class="icon-svg" viewBox="0 0 24 24">
         <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
@@ -777,9 +782,9 @@
   <main class="container" style="padding-top: 1.5rem; padding-bottom: 3rem;">
     <!-- Okruszki -->
     <nav class="breadcrumbs" aria-label="Ścieżka powrotu">
-      <a href="../../">Strona główna</a>
+      <a href="/">Strona główna</a>
       <span class="separator">/</span>
-      <a href="../">Blog</a>
+      <a href="/blog/">Blog</a>
       <span class="separator">/</span>
       <span aria-current="page">Przejażdżki bryczką</span>
     </nav>
@@ -886,14 +891,14 @@
 
         <!-- Nawigacja artykułu -->
         <div class="article-navigation">
-          <a href="../ognisko-z-muzyka-lesne-ranczo/" class="btn btn-secondary" style="font-size: 0.875rem;">
+          <a href="/blog/ognisko-z-muzyka-lesne-ranczo/" class="btn btn-secondary" style="font-size: 0.875rem;">
             <svg class="icon-svg" viewBox="0 0 24 24">
               <line x1="19" y1="12" x2="5" y2="12"></line>
               <polyline points="12 19 5 12 12 5"></polyline>
             </svg>
             <span>Poprzedni: Ognisko z muzyką</span>
           </a>
-          <a href="../jazda-konna-w-siodle-ostroleka/" class="btn btn-primary" style="font-size: 0.875rem;">
+          <a href="/blog/jazda-konna-w-siodle-ostroleka/" class="btn btn-primary" style="font-size: 0.875rem;">
             <span>Następny: Jazda konna w siodle</span>
             <svg class="icon-svg" viewBox="0 0 24 24">
               <line x1="5" y1="12" x2="19" y2="12"></line>
@@ -919,12 +924,12 @@
           <div class="blog-card-content">
             <span class="blog-card-tag">Ognisko & Muzyka</span>
             <h3 class="blog-card-title">
-              <a href="../ognisko-z-muzyka-lesne-ranczo/">Ognisko przy muzyce w Leśnym Ranczu — impreza, o jakiej marzysz</a>
+              <a href="/blog/ognisko-z-muzyka-lesne-ranczo/">Ognisko przy muzyce w Leśnym Ranczu — impreza, o jakiej marzysz</a>
             </h3>
             <p class="blog-card-excerpt">
               Szukasz miejsca na imprezę integracyjną, urodziny, wieczór kawalerski lub spotkanie ze znajomymi? Klimatyczna drewniana altana z paleniskiem i muzyką na żywo czeka w Olszewce.
             </p>
-            <a href="../ognisko-z-muzyka-lesne-ranczo/" class="blog-card-link">
+            <a href="/blog/ognisko-z-muzyka-lesne-ranczo/" class="blog-card-link">
               <span>Czytaj artykuł</span>
               <svg class="icon-svg" viewBox="0 0 24 24" style="width: 1rem; height: 1rem;">
                 <line x1="5" y1="12" x2="19" y2="12"></line>
@@ -939,12 +944,12 @@
           <div class="blog-card-content">
             <span class="blog-card-tag">W siodle & Jeździectwo</span>
             <h3 class="blog-card-title">
-              <a href="../jazda-konna-w-siodle-ostroleka/">Jazda konna w siodle w Leśnym Ranczu — przygoda dla każdego</a>
+              <a href="/blog/jazda-konna-w-siodle-ostroleka/">Jazda konna w siodle w Leśnym Ranczu — przygoda dla każdego</a>
             </h3>
             <p class="blog-card-excerpt">
               Spokojne konie, oprowadzanki w siodle dla dzieci i rekreacja w sercu kurpiowskich lasów. Sprawdź ofertę wypoczynku w siodle!
             </p>
-            <a href="../jazda-konna-w-siodle-ostroleka/" class="blog-card-link">
+            <a href="/blog/jazda-konna-w-siodle-ostroleka/" class="blog-card-link">
               <span>Czytaj artykuł</span>
               <svg class="icon-svg" viewBox="0 0 24 24" style="width: 1rem; height: 1rem;">
                 <line x1="5" y1="12" x2="19" y2="12"></line>
@@ -969,14 +974,16 @@
         </div>
 
         <div>
-          <div class="footer-heading">Szybkie linki</div>
+          <div class="footer-heading">Nasza oferta</div>
           <ul class="footer-links">
-            <li><a href="../../#wypoczynek">Ognisko & Bryczka</a></li>
-            <li><a href="../../#oferta">Wypoczynek w siodle</a></li>
-            <li><a href="../../#imprezy">Imprezy & Biesiady</a></li>
-            <li><a href="../" style="color: var(--color-primary); font-weight: 600;">Blog i aktualności</a></li>
-            <li><a href="../../#mini-zoo">Mini zoo zagrodowe</a></li>
-            <li><a href="../../#kontakt">Kontakt i dojazd</a></li>
+            <li><a href="/ognisko-altana/">Ognisko & Altana biesiadna</a></li>
+            <li><a href="/bryczka/">Przejażdżki bryczką</a></li>
+            <li><a href="/jazda-konna/">Jazda konna w siodle</a></li>
+            <li><a href="/mini-zoo/">Mini zoo zagrodowe</a></li>
+            <li><a href="/kajaki/">Spływy kajakowe</a></li>
+            <li><a href="/imprezy-okolicznosciowe/">Imprezy okolicznościowe</a></li>
+            <li><a href="/blog/" style="color: var(--color-primary); font-weight: 600;">Blog i poradniki</a></li>
+            <li><a href="/#kontakt">Kontakt i dojazd</a></li>
           </ul>
         </div>
 
@@ -1003,13 +1010,32 @@
 
   <script>
     document.addEventListener('DOMContentLoaded', function() {
-      const mobileBtn = document.getElementById('mobileMenuBtn');
+      const hamburgerBtn = document.getElementById('hamburgerBtn');
       const mobileNav = document.getElementById('mobileNav');
-      if (mobileBtn && mobileNav) {
-        mobileBtn.addEventListener('click', function() {
-          const isOpen = mobileNav.classList.toggle('open');
-          mobileBtn.classList.toggle('active');
-          mobileBtn.setAttribute('aria-expanded', isOpen);
+      const mobileLinks = document.querySelectorAll('.mobile-link');
+
+      function toggleMenu() {
+        const isOpen = mobileNav.classList.contains('open');
+        mobileNav.classList.toggle('open');
+        hamburgerBtn.classList.toggle('active');
+        hamburgerBtn.setAttribute('aria-expanded', (!isOpen).toString());
+      }
+
+      if (hamburgerBtn && mobileNav) {
+        hamburgerBtn.addEventListener('click', toggleMenu);
+
+        mobileLinks.forEach(function(link) {
+          link.addEventListener('click', function() {
+            if (mobileNav.classList.contains('open')) {
+              toggleMenu();
+            }
+          });
+        });
+
+        document.addEventListener('click', function(e) {
+          if (!mobileNav.contains(e.target) && !hamburgerBtn.contains(e.target) && mobileNav.classList.contains('open')) {
+            toggleMenu();
+          }
         });
       }
     });
