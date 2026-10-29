@@ -928,7 +928,7 @@
         </p>
         <ul>
           <li><strong>Urodziny i jubileusze w plenerze:</strong> Zamiast tradycyjnego lokalu — swobodna biesiada, świeże powietrze, zapach lasu i zabawa bez sztywnych ram.</li>
-          <li><strong>Imprezy integracyjne dla firm:</strong> Nic nie zbliża zespołu tak skutecznie jak wspólne pieczenie kiełbasek, rozmowy przy ognisku, muzyka i przejażdżka bryczką.</li>
+          <li><strong>Imprezy integracyjne dla firm:</strong> Nic nie zbliża zespołu tak skutecznie jak wspólne pieczenie kiełbasek, rozmowy przy ognisku, muzyka i przejażdżka bryczką. Zobacz <a href="/blog/integracja-firmowa-ostroleka-ognisko-bryczka/" style="color: var(--color-primary); font-weight: 600; text-decoration: underline;">jak wygląda integracja firmowa w Leśnym Ranczu</a>.</li>
           <li><strong>Wieczory panieńskie i kawalerskie:</strong> Połączenie ogniska w altanie z atrakcjami rancza (bryczka, w siodle, plenerowe zabawy) to gwarancja niezapomnianej nocy.</li>
           <li><strong>Spotkania klasowe, zjazdy rodzinne i wycieczki:</strong> Bezpieczna przestrzeń dla dzieci, ogrodzony teren rancza, zwierzęta w mini zoo i wygoda dla starszych uczestników.</li>
         </ul>
@@ -1110,5 +1110,38 @@
       });
     });
   </script>
+
+  <!-- sticky-cta:start (pasek kontaktowy na telefonach; usuń ten blok, jeśli niepotrzebny) -->
+  <style>
+    .sticky-cta { display: none; }
+    @media (max-width: 767px) {
+      body { padding-bottom: 4.75rem; }
+      .sticky-cta {
+        position: fixed; left: 0; right: 0; bottom: 0; z-index: 900;
+        display: flex; gap: 0.5rem;
+        padding: 0.625rem 0.75rem calc(0.625rem + env(safe-area-inset-bottom, 0px));
+        background: rgba(38, 35, 22, 0.97);
+        box-shadow: 0 -4px 16px rgba(0, 0, 0, 0.22);
+      }
+      .sticky-cta a {
+        display: flex; align-items: center; justify-content: center; gap: 0.5rem;
+        padding: 0.8rem 0.5rem; border-radius: 6px;
+        font-weight: 700; font-size: 0.9375rem; line-height: 1.2; text-decoration: none;
+      }
+      .sticky-cta .sc-call { flex: 1.6; background: #e17c23; color: #fff; }
+      .sticky-cta .sc-fb { flex: 1; background: #f5f3e7; color: #262316; }
+      .sticky-cta svg { width: 1.125rem; height: 1.125rem; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; flex-shrink: 0; }
+    }
+  </style>
+  <div class="sticky-cta" role="complementary" aria-label="Szybki kontakt">
+    <a class="sc-call" href="tel:795941264" aria-label="Zadzwoń do Leśnego Rancza i zapytaj o termin">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+      <span>Zadzwoń i zapytaj o termin</span>
+    </a>
+    <a class="sc-fb" href="https://www.facebook.com/LesneRanczoOlszewka/" target="_blank" rel="noopener noreferrer" aria-label="Napisz do nas na Facebooku">
+      <span>Facebook</span>
+    </a>
+  </div>
+  <!-- sticky-cta:end -->
 </body>
 </html>
